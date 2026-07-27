@@ -91,7 +91,8 @@
             <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.5rem;margin-bottom:6px">Book your consultation</h3>
             <p style="color:#6B6B6B;font-size:0.93rem;margin-bottom:24px">Share your goal and we will suggest the right course track.</p>
 
-            <form id="contactForm" novalidate aria-label="Contact Form">
+            <form id="contactForm" action="https://formspree.io/f/xeeylaav" method="POST" novalidate aria-label="Contact Form">
+              <input type="hidden" name="_subject" value="New inquiry from TalojaNEXGen website" />
               <div class="form-row">
                 <div class="form-group">
                   <label for="fname">First Name *</label>

@@ -31,10 +31,29 @@ const contactForm = document.getElementById('contactForm');
 if (contactForm) {
   contactForm.addEventListener('submit', function (e) {
     e.preventDefault();
+
     const btn = this.querySelector('button[type="submit"]');
-    btn.textContent = '✓ Message Sent!';
-    btn.style.background = '#16a34a';
-    setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; this.reset(); }, 3000);
+    const originalText = btn.textContent;
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    fetch(this.action, {
+      method: 'POST',
+      body: new FormData(this),
+      headers: { Accept: 'application/json' }
+    })
+      .then(response => {
+        if (response.ok) {
+          window.location.href = 'thank-you.html';
+        } else {
+          throw new Error('Submission failed');
+        }
+      })
+      .catch(() => {
+        btn.textContent = originalText;
+        btn.disabled = false;
+        alert('Sorry, there was a problem sending your message. Please try again.');
+      });
   });
 }
 
