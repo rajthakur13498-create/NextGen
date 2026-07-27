@@ -44,7 +44,7 @@ if (contactForm) {
     })
       .then(response => {
         if (response.ok) {
-          window.location.href = 'thank-you.html';
+          window.location.href = 'https://rajthakur13498-create.github.io/NextGen/thank-you.html';
         } else {
           throw new Error('Submission failed');
         }
